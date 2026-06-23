@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultores Legales Ecuador | Estudio Jurídico</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cinzel (Premium Serif para títulos jurídicos) & Montserrat (Lector de alta legibilidad) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Iconos Elegantes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuración Personalizada de Colores de Marca -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        juridico: {
+                            navy: '#060d1a',       /* Azul Marino Muy Profundo */
+                            navyLight: '#0d1b33',  /* Azul Marino para tarjetas y contrastes */
+                            gold: '#c5a880',       /* Dorado Elegante (como el logo) */
+                            goldDark: '#b09166',   /* Dorado más oscuro para hover */
+                            goldLight: '#ebdcc5',  /* Dorado suave de fondo */
+                            silver: '#f8fafc'      /* Blanco Grisáceo */
+                        }
+                    },
+                    fontFamily: {
+                        'serif-juridico': ['Cinzel', 'serif'],
+                        'sans-juridico': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Sutiles animaciones y personalizaciones de fuentes */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #060d1a;
+            color: #f8fafc;
+        }
+        .serif-title {
+            font-family: 'Cinzel', serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-juridico-gold selection:text-juridico-navy overflow-x-hidden">
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-juridico-navy/95 backdrop-blur-md border-b border-juridico-gold/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
+            
+            <!-- Logo Corporativo -->
+            <a href="#inicio" class="flex items-center space-x-3 group">
+                <div class="h-14 w-14 sm:h-16 sm:w-16 flex items-center justify-center rounded-lg bg-juridico-navyLight border border-juridico-gold/35 overflow-hidden transition-all duration-300 group-hover:border-juridico-gold">
+                    <!-- Si la imagen del logo existe en la raíz, se mostrará. Si no, tiene un elegante texto fallback -->
+                    <img src="image_42e317.png" alt="Consultores Legales Ecuador Logo" class="h-full w-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <span class="hidden text-juridico-gold font-bold text-lg tracking-wider">C L E</span>
+                </div>
+                <div>
+                    <span class="block serif-title text-base sm:text-lg font-bold text-white tracking-widest group-hover:text-juridico-gold transition-colors duration-300">CONSULTORES LEGALES</span>
+                    <span class="block text-xs uppercase tracking-[0.3em] text-juridico-gold">ECUADOR</span>
+                </div>
+            </a>
+
+            <!-- Menú Desktop -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-juridico-gold transition-colors duration-300">Inicio</a>
+                <a href="#nosotros" class="text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-juridico-gold transition-colors duration-300">Nosotros</a>
+                <a href="#servicios" class="text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-juridico-gold transition-colors duration-300">Servicios</a>
+                <a href="#equipo" class="text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-juridico-gold transition-colors duration-300">Equipo</a>
+                <a href="#contacto" class="text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-juridico-gold transition-colors duration-300">Contacto</a>
+            </nav>
+
+            <!-- Botón de Agendar Consulta (Desktop) -->
+            <div class="hidden md:block">
+                <button onclick="openModal()" class="px-6 py-2.5 bg-transparent border-2 border-juridico-gold text-juridico-gold text-xs font-semibold uppercase tracking-widest rounded hover:bg-juridico-gold hover:text-juridico-navy transition-all duration-300 shadow-md hover:shadow-juridico-gold/20">
+                    Agendar Consulta
+                </button>
+            </div>
+
+            <!-- Botón Menú Móvil -->
+            <button id="mobile-menu-button" class="md:hidden p-2 text-gray-300 hover:text-juridico-gold focus:outline-none" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-juridico-navy border-b border-juridico-gold/20 animate-fade-in">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#inicio" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Inicio</a>
+                <a href="#nosotros" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Nosotros</a>
+                <a href="#servicios" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Servicios</a>
+                <a href="#equipo" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Equipo</a>
+                <a href="#contacto" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Contacto</a>
+                <div class="pt-4 px-3">
+                    <button onclick="toggleMenu(); openModal()" class="w-full py-3 bg-juridico-gold text-juridico-navy text-xs font-bold uppercase tracking-widest rounded shadow-md hover:bg-juridico-goldDark transition-all duration-300">
+                        Agendar Consulta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow pt-20 sm:pt-24">
+
+        <!-- HERO SECTION (INICIO) -->
+        <section id="inicio" class="relative py-20 lg:py-32 overflow-hidden flex items-center min-h-[90vh]">
+            <!-- Fondo de Líneas Elegantes de Red o Brillo Sutil -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a880_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Información Izquierda -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-juridico-navyLight border border-juridico-gold/30 text-juridico-gold">
+                            <i class="fa-solid fa-scale-balanced text-xs"></i>
+                            <span class="text-xs font-semibold tracking-wider uppercase">Compromiso, Calidad y Resultados</span>
+                        </div>
+                        
+                        <h1 class="serif-title text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Defendemos tus derechos con <span class="text-transparent bg-clip-text bg-gradient-to-r from-juridico-gold via-[#e3cfb3] to-juridico-gold">excelencia legal</span>
+                        </h1>
+                        
+                        <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                            En <strong class="text-white font-medium">Consultores Legales Ecuador</strong>, somos una firma dedicada a brindar asesoramiento jurídico integral de primer nivel. Protegemos tus intereses y garantizamos seguridad jurídica en cada uno de tus proyectos y disputas legales.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                            <a href="#contacto" class="px-8 py-4 bg-juridico-gold hover:bg-juridico-goldDark text-juridico-navy font-bold text-xs uppercase tracking-widest rounded shadow-lg shadow-juridico-gold/20 transition-all duration-300 text-center">
+                                Contactar Ahora
+                            </a>
+                            <a href="#servicios" class="px-8 py-4 bg-juridico-navyLight hover:bg-juridico-navy border border-juridico-gold/30 hover:border-juridico-gold text-white font-bold text-xs uppercase tracking-widest rounded transition-all duration-300 text-center">
+                                Explorar Servicios
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Imagen Derecha (Foto Grupal en Oficina) -->
+                    <div class="lg:col-span-5 flex justify-center w-full">
+                        <div class="relative w-full max-w-md lg:max-w-none group">
+                            <!-- Marco Dorado Decorativo -->
+                            <div class="absolute -inset-2 rounded-2xl bg-gradient-to-r from-juridico-gold/50 to-juridico-gold/10 opacity-30 blur-md group-hover:opacity-50 transition-all duration-500"></div>
+                            
+                            <!-- Borde de marco estético -->
+                            <div class="absolute inset-0 rounded-xl border border-juridico-gold/30 translate-x-4 translate-y-4 -z-10 pointer-events-none transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                            
+                            <!-- Contenedor Principal de la Imagen -->
+                            <div class="relative rounded-xl overflow-hidden bg-juridico-navyLight border-2 border-juridico-gold/40 shadow-2xl transition-all duration-500 group-hover:border-juridico-gold aspect-square">
+                                <img src="image_42ed45.jpg" alt="Equipo de Consultores Legales Ecuador" class="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                
+                                <!-- Mensaje de Error / Fallback si no se carga la imagen -->
+                                <div class="hidden absolute inset-0 flex-col items-center justify-center p-6 text-center bg-juridico-navyLight text-gray-400">
+                                    <i class="fa-solid fa-users text-5xl text-juridico-gold mb-3"></i>
+                                    <p class="font-serif-juridico text-lg font-bold text-white mb-1">Consultores Legales Ecuador</p>
+                                    <p class="text-xs">Por favor, sube la foto grupal <code class="text-juridico-gold">image_42ed45.jpg</code> a tu repositorio para verla aquí de forma espectacular.</p>
+                                </div>
+
+                                <!-- Overlay sutil de elegancia -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-juridico-navy via-transparent to-transparent opacity-40"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- NOSOTROS / VALORES -->
+        <section id="nosotros" class="py-24 bg-juridico-navyLight/40 border-y border-juridico-gold/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-juridico-gold">Quiénes Somos</h2>
+                    <p class="serif-title text-3xl sm:text-4xl font-extrabold text-white">Nuestra Firma Jurídica</p>
+                    <div class="w-16 h-1 bg-juridico-gold mx-auto rounded"></div>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        Somos un estudio jurídico guayaquileño conformado por profesionales del derecho altamente capacitados. Nos distinguimos por brindar una atención personalizada, guiada por principios de absoluta ética, lealtad procesal y excelencia profesional.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Tarjeta Valor 1 -->
+                    <div class="bg-juridico-navyLight/60 p-8 rounded-xl border border-juridico-gold/15 hover:border-juridico-gold/50 transition-all duration-300 hover:-translate-y-2 group">
+                        <div class="w-12 h-12 rounded-lg bg-juridico-gold/10 flex items-center justify-center text-juridico-gold mb-6 transition-colors group-hover:bg-juridico-gold group-hover:text-juridico-navy">
+                            <i class="fa-solid fa-gavel text-xl"></i>
+                        </div>
+                        <h3 class="serif-title text-lg font-semibold text-white mb-3 group-hover:text-juridico-gold transition-colors">Compromiso Inquebrantable</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Asumimos cada caso con el máximo nivel de responsabilidad. Nos enfocamos plenamente en la defensa de sus derechos e intereses corporativos y personales.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta Valor 2 -->
+                    <div class="bg-juridico-navyLight/60 p-8 rounded-xl border border-juridico-gold/15 hover:border-juridico-gold/50 transition-all duration-300 hover:-translate-y-2 group">
+                        <div class="w-12 h-12 rounded-lg bg-juridico-gold/10 flex items-center justify-center text-juridico-gold mb-6 transition-colors group-hover:bg-juridico-gold group-hover:text-juridico-navy">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </div>
+                        <h3 class="serif-title text-lg font-semibold text-white mb-3 group-hover:text-juridico-gold transition-colors">Ética y Transparencia</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Creemos en la honestidad total. Mantendremos una comunicación constante y realista sobre el estado procesal y viabilidad real de su caso.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta Valor 3 -->
+                    <div class="bg-juridico-navyLight/60 p-8 rounded-xl border border-juridico-gold/15 hover:border-juridico-gold/50 transition-all duration-300 hover:-translate-y-2 group">
+                        <div class="w-12 h-12 rounded-lg bg-juridico-gold/10 flex items-center justify-center text-juridico-gold mb-6 transition-colors group-hover:bg-juridico-gold group-hover:text-juridico-navy">
+                            <i class="fa-solid fa-certificate text-xl"></i>
+                        </div>
+                        <h3 class="serif-title text-lg font-semibold text-white mb-3 group-hover:text-juridico-gold transition-colors">Calidad y Resultados</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Nuestra formación continua y experiencia técnica nos permiten proponer e implementar estrategias eficaces para obtener la victoria procesal.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SERVICIOS / ÁREAS DE PRÁCTICA -->
+        <section id="servicios" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-juridico-gold">Nuestra Especialidad</h2>
+                    <p class="serif-title text-3xl sm:text-4xl font-extrabold text-white">Nuestros Servicios Jurídicos</p>
+                    <div class="w-16 h-1 bg-juridico-gold mx-auto rounded"></div>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        Ofrecemos asesoría y defensa legal especializada en múltiples disciplinas del derecho para blindar su empresa o solventar de forma exitosa conflictos personales y familiares.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Servicio 1: Penal -->
+                    <div class="bg-juridico-navyLight p-8 rounded-xl border border-juridico-gold/10 hover:border-juridico-gold transition-all duration-300 flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="text-juridico-gold text-3xl"><i class="fa-solid fa-scale-unbalanced-flip"></i></div>
+                            <h3 class="serif-title text-xl font-semibold text-white">Derecho Penal y Procesal</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Patrocinio judicial de primer nivel en todas las etapas procesales. Brindamos representación tanto a víctimas como la defensa técnica de personas procesadas por la presunta comisión de delitos en Ecuador.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <a href="#contacto" class="text-xs font-bold tracking-widest uppercase text-juridico-gold group-hover:text-white transition-colors flex items-center space-x-2">
+                                <span>Solicitar Asesoría</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 2: Corporativo -->
+                    <div class="bg-juridico-navyLight p-8 rounded-xl border border-juridico-gold/10 hover:border-juridico-gold transition-all duration-300 flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="text-juridico-gold text-3xl"><i class="fa-solid fa-building-columns"></i></div>
+                            <h3 class="serif-title text-xl font-semibold text-white">Derecho Corporativo y Mercantil</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Constitución de compañías ante la Superintendencia de Compañías, elaboración y revisión de contratos comerciales, fusiones, adquisiciones y blindaje legal preventivo continuo para negocios y corporaciones.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <a href="#contacto" class="text-xs font-bold tracking-widest uppercase text-juridico-gold group-hover:text-white transition-colors flex items-center space-x-2">
+                                <span>Solicitar Asesoría</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 3: Constitucional -->
+                    <div class="bg-juridico-navyLight p-8 rounded-xl border border-juridico-gold/10 hover:border-juridico-gold transition-all duration-300 flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="text-juridico-gold text-3xl"><i class="fa-solid fa-scroll"></i></div>
+                            <h3 class="serif-title text-xl font-semibold text-white">Derecho Constitucional</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Acciones de protección, medidas cautelares, hábeas corpus, hábeas data, acciones extraordinarias de protección y defensas rigurosas ante la vulneración de garantías y derechos constitucionales fundamentales.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <a href="#contacto" class="text-xs font-bold tracking-widest uppercase text-juridico-gold group-hover:text-white transition-colors flex items-center space-x-2">
+                                <span>Solicitar Asesoría</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 4: Recuperación de Valores -->
+                    <div class="bg-juridico-navyLight p-8 rounded-xl border border-juridico-gold/10 hover:border-juridico-gold transition-all duration-300 flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="text-juridico-gold text-3xl"><i class="fa-solid fa-coins"></i></div>
+                            <h3 class="serif-title text-xl font-semibold text-white">Recuperación de Valores</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Cobro judicial y extrajudicial altamente efectivo de cartera vencida, cobro de letras de cambio, pagarés, facturas no pagadas y cheques protestados, garantizando la recuperación de sus activos financieros.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <a href="#contacto" class="text-xs font-bold tracking-widest uppercase text-juridico-gold group-hover:text-white transition-colors flex items-center space-x-2">
+                                <span>Solicitar Asesoría</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 5: Civil y Familia -->
+                    <div class="bg-juridico-navyLight p-8 rounded-xl border border-juridico-gold/10 hover:border-juridico-gold transition-all duration-300 flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="text-juridico-gold text-3xl"><i class="fa-solid fa-people-roof"></i></div>
+                            <h3 class="serif-title text-xl font-semibold text-white">Derecho Civil y de Familia</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Resolución de divorcios, pensiones alimenticias, patria potestad, régimen de visitas, juicios de inventario, herencias, donaciones, compraventa de inmuebles y prescripciones adquisitivas de dominio.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <a href="#contacto" class="text-xs font-bold tracking-widest uppercase text-juridico-gold group-hover:text-white transition-colors flex items-center space-x-2">
+                                <span>Solicitar Asesoría</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 6: Notarial -->
+                    <div class="bg-juridico-navyLight p-8 rounded-xl border border-juridico-gold/10 hover:border-juridico-gold transition-all duration-300 flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="text-juridico-gold text-3xl"><i class="fa-solid fa-signature"></i></div>
+                            <h3 class="serif-title text-xl font-semibold text-white">Derecho Notarial</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Asesoría y preparación minuciosa de minutas, poderes generales y especiales, escrituras públicas, posesiones efectivas de herencia, capitulaciones matrimoniales y todo tipo de declaración juramentada.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <a href="#contacto" class="text-xs font-bold tracking-widest uppercase text-juridico-gold group-hover:text-white transition-colors flex items-center space-x-2">
+                                <span>Solicitar Asesoría</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EQUIPO DE PROFESIONALES -->
+        <section id="equipo" class="py-24 bg-juridico-navyLight/40 border-y border-juridico-gold/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-20">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-juridico-gold">Nuestros Abogados</h2>
+                    <p class="serif-title text-3xl sm:text-4xl font-extrabold text-white">Nuestros Especialistas Jurídicos</p>
+                    <div class="w-16 h-1 bg-juridico-gold mx-auto rounded"></div>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        Contamos con un equipo especializado para cada área de práctica, ofreciendo soluciones estratégicas acordes al marco legal ecuatoriano actual.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 justify-center items-stretch">
+                    
+                    <!-- Abogado 1: Leónidas Hidalgo -->
+                    <div class="bg-juridico-navy/85 border border-juridico-gold/20 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between hover:border-juridico-gold hover:shadow-2xl hover:shadow-juridico-gold/10 transition-all duration-300 group">
+                        <div>
+                            <div class="relative overflow-hidden aspect-[4/5] bg-juridico-navyLight border-b border-juridico-gold/25">
+                                <img src="image_42e626.jpg" alt="Abg. Leónidas Hidalgo" class="w-full h-full object-cover transform scale-100 group-hover:scale-103 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                
+                                <!-- Fallback si no hay foto individual -->
+                                <div class="hidden absolute inset-0 flex flex-col items-center justify-center p-4 bg-juridico-navyLight text-gray-400">
+                                    <i class="fa-solid fa-user-tie text-5xl text-juridico-gold mb-2"></i>
+                                    <p class="text-xs">Sube <code class="text-juridico-gold">image_42e626.jpg</code> para ver la foto individual</p>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-juridico-navy via-transparent to-transparent opacity-60"></div>
+                                <div class="absolute bottom-4 left-4">
+                                    <span class="px-3 py-1 bg-juridico-gold text-juridico-navy text-[10px] font-bold uppercase tracking-widest rounded">Socio</span>
+                                </div>
+                            </div>
+                            <div class="p-6 sm:p-8 space-y-4">
+                                <div>
+                                    <h3 class="serif-title text-xl font-bold text-white group-hover:text-juridico-gold transition-colors">Abg. Leónidas Hidalgo</h3>
+                                    <p class="text-xs uppercase tracking-wider text-juridico-gold mt-1">Especialista en Litigio y Defensa</p>
+                                </div>
+                                <p class="text-gray-300 text-sm leading-relaxed font-light">
+                                    Dedicado a la defensa rigurosa de los derechos fundamentales, representación penal estratégica y asesoría integral en el ámbito comercial y de negocios.
+                                </p>
+                                <div class="space-y-2 pt-2 border-t border-juridico-gold/10">
+                                    <span class="text-xs font-semibold text-white tracking-wider block">Áreas de enfoque:</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Derecho Penal</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Constitucional</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Mercantil</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Recuperación de Valores</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 pt-0">
+                            <button onclick="setConsultationAbogado('Abg. Leónidas Hidalgo')" class="w-full py-3 bg-juridico-navyLight hover:bg-juridico-gold hover:text-juridico-navy border border-juridico-gold/40 text-juridico-gold text-xs font-bold uppercase tracking-widest rounded transition-all duration-300 flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                <span>Agendar Cita</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Abogado 2: Hugo Leónidas Córdova Hidalgo -->
+                    <div class="bg-juridico-navy/85 border border-juridico-gold/20 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between hover:border-juridico-gold hover:shadow-2xl hover:shadow-juridico-gold/10 transition-all duration-300 group">
+                        <div>
+                            <div class="relative overflow-hidden aspect-[4/5] bg-juridico-navyLight border-b border-juridico-gold/25">
+                                <img src="image_42e65b.jpg" alt="Abg. Hugo Córdova Hidalgo" class="w-full h-full object-cover transform scale-100 group-hover:scale-103 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                
+                                <!-- Fallback si no hay foto individual -->
+                                <div class="hidden absolute inset-0 flex flex-col items-center justify-center p-4 bg-juridico-navyLight text-gray-400">
+                                    <i class="fa-solid fa-user-tie text-5xl text-juridico-gold mb-2"></i>
+                                    <p class="text-xs">Sube <code class="text-juridico-gold">image_42e65b.jpg</code> para ver la foto individual</p>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-juridico-navy via-transparent to-transparent opacity-60"></div>
+                                <div class="absolute bottom-4 left-4">
+                                    <span class="px-3 py-1 bg-juridico-gold text-juridico-navy text-[10px] font-bold uppercase tracking-widest rounded">Socio</span>
+                                </div>
+                            </div>
+                            <div class="p-6 sm:p-8 space-y-4">
+                                <div>
+                                    <h3 class="serif-title text-xl font-bold text-white group-hover:text-juridico-gold transition-colors">Abg. Hugo L. Córdova H.</h3>
+                                    <p class="text-xs uppercase tracking-wider text-juridico-gold mt-1">Especialista Corporativo y Notarial</p>
+                                </div>
+                                <p class="text-gray-300 text-sm leading-relaxed font-light">
+                                    Orientado a la seguridad jurídica de las empresas, la correcta estructuración de trámites societarios, contratos civiles y la optimización en la recuperación de activos vencidos.
+                                </p>
+                                <div class="space-y-2 pt-2 border-t border-juridico-gold/10">
+                                    <span class="text-xs font-semibold text-white tracking-wider block">Áreas de enfoque:</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Derecho Corporativo</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Notarial</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Civil</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Recuperación de Valores</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 pt-0">
+                            <button onclick="setConsultationAbogado('Abg. Hugo Córdova')" class="w-full py-3 bg-juridico-navyLight hover:bg-juridico-gold hover:text-juridico-navy border border-juridico-gold/40 text-juridico-gold text-xs font-bold uppercase tracking-widest rounded transition-all duration-300 flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                <span>Agendar Cita</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Abogada 3: María José Barzola Correa -->
+                    <div class="bg-juridico-navy/85 border border-juridico-gold/20 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between hover:border-juridico-gold hover:shadow-2xl hover:shadow-juridico-gold/10 transition-all duration-300 group">
+                        <div>
+                            <div class="relative overflow-hidden aspect-[4/5] bg-juridico-navyLight border-b border-juridico-gold/25">
+                                <img src="image_42e660.jpg" alt="Abg. María José Barzola" class="w-full h-full object-cover transform scale-100 group-hover:scale-103 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                
+                                <!-- Fallback si no hay foto individual -->
+                                <div class="hidden absolute inset-0 flex flex-col items-center justify-center p-4 bg-juridico-navyLight text-gray-400">
+                                    <i class="fa-solid fa-user-tie text-5xl text-juridico-gold mb-2"></i>
+                                    <p class="text-xs">Sube <code class="text-juridico-gold">image_42e660.jpg</code> para ver la foto individual</p>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-juridico-navy via-transparent to-transparent opacity-60"></div>
+                                <div class="absolute bottom-4 left-4">
+                                    <span class="px-3 py-1 bg-juridico-gold text-juridico-navy text-[10px] font-bold uppercase tracking-widest rounded">Socia</span>
+                                </div>
+                            </div>
+                            <div class="p-6 sm:p-8 space-y-4">
+                                <div>
+                                    <h3 class="serif-title text-xl font-bold text-white group-hover:text-juridico-gold transition-colors">Abg. María José Barzola</h3>
+                                    <p class="text-xs uppercase tracking-wider text-juridico-gold mt-1">Especialista Civil y Procesal</p>
+                                </div>
+                                <p class="text-gray-300 text-sm leading-relaxed font-light">
+                                    Especializada en litigio estratégico civil y resolución de conflictos familiares, pensiones y divorcios, brindando mediación y defensa jurídica efectiva de su patrimonio.
+                                </p>
+                                <div class="space-y-2 pt-2 border-t border-juridico-gold/10">
+                                    <span class="text-xs font-semibold text-white tracking-wider block">Áreas de enfoque:</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Derecho Procesal</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Civil</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Familia</span>
+                                        <span class="text-[10px] bg-juridico-navyLight text-juridico-gold border border-juridico-gold/25 px-2.5 py-1 rounded-full">Recuperación de Valores</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 pt-0">
+                            <button onclick="setConsultationAbogado('Abg. María José Barzola')" class="w-full py-3 bg-juridico-navyLight hover:bg-juridico-gold hover:text-juridico-navy border border-juridico-gold/40 text-juridico-gold text-xs font-bold uppercase tracking-widest rounded transition-all duration-300 flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                <span>Agendar Cita</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACTO & UBICACIÓN -->
+        <section id="contacto" class="py-24 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                    
+                    <!-- Información de Contacto (Izquierda) -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <h2 class="text-xs font-bold uppercase tracking-widest text-juridico-gold mb-2">Canales de Atención</h2>
+                            <p class="serif-title text-3xl sm:text-4xl font-extrabold text-white">Comuníquese con Nosotros</p>
+                            <div class="w-16 h-1 bg-juridico-gold mt-3 rounded"></div>
+                        </div>
+                        
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Si requiere asesoría inmediata, puede agendar una cita presencial en nuestras oficinas o solicitar una consulta virtual rellenando el formulario de la derecha. Estamos listos para atenderle.
+                        </p>
+
+                        <div class="space-y-6 pt-4">
+                            <!-- Correo -->
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-juridico-navyLight border border-juridico-gold/25 flex items-center justify-center text-juridico-gold flex-shrink-0">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-wider text-gray-400 font-medium">Correo Electrónico</span>
+                                    <a href="mailto:consultoreslegalesec_@outlook.com" class="text-white hover:text-juridico-gold text-sm transition-colors break-all">consultoreslegalesec_@outlook.com</a>
+                                </div>
+                            </div>
+
+                            <!-- Ubicación -->
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-juridico-navyLight border border-juridico-gold/25 flex items-center justify-center text-juridico-gold flex-shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-wider text-gray-400 font-medium">Dirección Presencial</span>
+                                    <span class="text-white text-sm">Edificio City Office, Guayaquil, Ecuador</span>
+                                </div>
+                            </div>
+
+                            <!-- TikTok Oficial -->
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-juridico-navyLight border border-juridico-gold/25 flex items-center justify-center text-juridico-gold flex-shrink-0">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-wider text-gray-400 font-medium">TikTok Corporativo</span>
+                                    <a href="https://www.tiktok.com/@consultoreslegales.ec" target="_blank" class="text-white hover:text-juridico-gold text-sm transition-colors">@consultoreslegales.ec</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mapa decorativo de ubicación o banner -->
+                        <div class="rounded-xl border border-juridico-gold/25 bg-juridico-navyLight/40 p-4 space-y-3">
+                            <div class="flex items-center space-x-2 text-juridico-gold text-xs font-semibold">
+                                <i class="fa-solid fa-map-pin"></i>
+                                <span class="uppercase tracking-wider">Ubicación Estratégica de Oficinas</span>
+                            </div>
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                Nuestras oficinas corporativas están situadas en la prestigiosa zona empresarial de Guayaquil, ofreciendo un entorno seguro y de fácil acceso con parqueadero privado para nuestros clientes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de Contacto (Derecha) -->
+                    <div class="lg:col-span-7 bg-juridico-navyLight rounded-2xl border border-juridico-gold/20 p-6 sm:p-10 shadow-2xl relative">
+                        
+                        <!-- Mensaje de éxito del formulario -->
+                        <div id="form-success" class="hidden absolute inset-0 bg-juridico-navyLight/98 rounded-2xl flex flex-col items-center justify-center p-8 text-center z-20 transition-all duration-300">
+                            <div class="w-16 h-16 bg-juridico-gold/10 border-2 border-juridico-gold rounded-full flex items-center justify-center text-juridico-gold text-3xl mb-4 animate-bounce">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <h3 class="serif-title text-2xl font-bold text-white mb-2">Mensaje Recibido</h3>
+                            <p class="text-gray-300 text-sm max-w-md mx-auto mb-6">
+                                Muchas gracias por ponerse en contacto con <strong class="text-white">Consultores Legales Ecuador</strong>. Un abogado experto de nuestro estudio analizará su solicitud y se comunicará con usted de inmediato.
+                            </p>
+                            <button onclick="resetContactForm()" class="px-6 py-2 bg-juridico-gold text-juridico-navy text-xs font-bold uppercase tracking-widest rounded hover:bg-juridico-goldDark transition-colors">
+                                Enviar Otro Mensaje
+                            </button>
+                        </div>
+
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2">Nombre Completo *</label>
+                                    <input type="text" id="name" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-juridico-gold transition-all" placeholder="Ej. Juan Pérez">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2">Número Telefónico *</label>
+                                    <input type="tel" id="phone" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-juridico-gold transition-all" placeholder="Ej. 0999999999">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="email" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2">Correo Electrónico *</label>
+                                    <input type="email" id="email" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-juridico-gold transition-all" placeholder="Ej. juan@correo.com">
+                                </div>
+                                <div>
+                                    <label for="service-type" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2">Tipo de Caso Jurídico</label>
+                                    <select id="service-type" class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-juridico-gold transition-all">
+                                        <option value="Derecho Penal">Derecho Penal</option>
+                                        <option value="Derecho Corporativo">Derecho Corporativo / Mercantil</option>
+                                        <option value="Derecho Civil">Derecho Civil y Familia</option>
+                                        <option value="Constitucional">Derecho Constitucional</option>
+                                        <option value="Derecho Notarial">Derecho Notarial</option>
+                                        <option value="Recuperación de Valores">Recuperación de Valores</option>
+                                        <option value="Otro">Otra Consulta Legal</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2">Detalles del Caso / Consulta *</label>
+                                <textarea id="message" rows="4" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-juridico-gold transition-all resize-none" placeholder="Escriba brevemente su situación jurídica para poder agendar una respuesta estratégica..."></textarea>
+                            </div>
+
+                            <div class="flex items-center space-x-3 text-xs text-gray-400">
+                                <i class="fa-solid fa-lock text-juridico-gold"></i>
+                                <span>Garantizamos total confidencialidad absoluta bajo secreto profesional.</span>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="w-full py-4 bg-juridico-gold hover:bg-juridico-goldDark text-juridico-navy text-xs font-bold uppercase tracking-widest rounded shadow-lg shadow-juridico-gold/10 hover:shadow-juridico-gold/20 transition-all duration-300">
+                                    Enviar Consulta Legal
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER / PIE DE PÁGINA -->
+    <footer class="bg-[#03060c] border-t border-juridico-gold/15 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-12 border-b border-juridico-gold/10">
+                
+                <!-- Logo e Info -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="h-10 w-10 flex items-center justify-center rounded bg-juridico-navyLight border border-juridico-gold/25 overflow-hidden">
+                            <img src="image_42e317.png" alt="Consultores Legales Ecuador" class="h-full w-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <span class="hidden text-juridico-gold font-bold text-xs">CLE</span>
+                        </div>
+                        <div>
+                            <span class="block serif-title text-sm font-bold text-white tracking-widest">CONSULTORES LEGALES</span>
+                            <span class="block text-[10px] uppercase tracking-wider text-juridico-gold">ECUADOR</span>
+                        </div>
+                    </div>
+                    <p class="text-xs leading-relaxed max-w-sm">
+                        Defendemos los intereses de nuestros clientes con la más estricta ética, lealtad y excelencia técnica en todo el territorio del Ecuador.
+                    </p>
+                </div>
+
+                <!-- Enlaces Rápidos -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="serif-title text-xs font-bold text-white uppercase tracking-wider">Enlaces Útiles</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-juridico-gold transition-colors">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-juridico-gold transition-colors">Nosotros</a></li>
+                        <li><a href="#servicios" class="hover:text-juridico-gold transition-colors">Áreas de Práctica</a></li>
+                        <li><a href="#equipo" class="hover:text-juridico-gold transition-colors">Nuestro Equipo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ubicación y Legal -->
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="serif-title text-xs font-bold text-white uppercase tracking-wider">Oficinas Principales</h4>
+                    <p class="text-xs leading-relaxed">
+                        📍 Edificio City Office, Piso de Oficinas, Guayaquil, Ecuador.<br>
+                        ✉️ Correo: <a href="mailto:consultoreslegalesec_@outlook.com" class="hover:text-juridico-gold transition-colors">consultoreslegalesec_@outlook.com</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+                <p>&copy; 2026 Consultores Legales Ecuador. Todos los derechos reservados.</p>
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.tiktok.com/@consultoreslegales.ec" target="_blank" class="hover:text-juridico-gold transition-colors text-base"><i class="fa-brands fa-tiktok"></i></a>
+                    <span class="text-gray-600">|</span>
+                    <span class="text-gray-500">Diseño Legal Exclusivo</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE FLOATING BUTTONS (WhatsApp Directo y Volver Arriba) -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+        <!-- WhatsApp Floating Button (Enfocado a Guayaquil, Ecuador) -->
+        <a href="https://wa.me/593955976014?text=Hola,%20quisiera%20agendar%20una%20consulta%20legal%20con%20Consultores%20Legales%20Ecuador." target="_blank" class="w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-all duration-300 relative group" aria-label="WhatsApp Directo">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="absolute right-16 bg-juridico-navyLight text-white border border-juridico-gold/20 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">WhatsApp Asesoría</span>
+        </a>
+    </div>
+
+    <!-- MODAL DE AGENDAMIENTO DE CONSULTA -->
+    <div id="consultation-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Fondo oscuro semitransparente -->
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-black/80 transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
+
+            <!-- Centrar modal verticalmente -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Contenedor del Modal -->
+            <div class="inline-block align-bottom bg-juridico-navy border border-juridico-gold/30 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                
+                <!-- Botón Cerrar en esquina -->
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-juridico-gold transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+
+                <!-- Cabecera del Modal -->
+                <div class="bg-juridico-navyLight p-6 sm:p-8 border-b border-juridico-gold/20">
+                    <div class="flex items-center space-x-3 text-juridico-gold mb-2">
+                        <i class="fa-solid fa-gavel text-xl"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Estudio Jurídico</span>
+                    </div>
+                    <h3 id="modal-title" class="serif-title text-xl sm:text-2xl font-bold text-white">Agendar Cita Legal</h3>
+                    <p id="modal-description" class="text-xs text-gray-400 mt-1">Reserve un espacio para analizar su caso con uno de nuestros especialistas.</p>
+                </div>
+
+                <!-- Formulario del Modal -->
+                <form id="modal-form" onsubmit="handleModalSubmit(event)" class="p-6 sm:p-8 space-y-4">
+                    
+                    <!-- Mostrar abogado asignado temporalmente -->
+                    <div id="assigned-lawyer-container" class="hidden flex items-center space-x-2 bg-juridico-gold/10 text-juridico-gold border border-juridico-gold/30 p-2.5 rounded text-xs font-medium">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>Especialista asignado: <strong id="assigned-lawyer-name">Abg.</strong></span>
+                    </div>
+
+                    <div>
+                        <label for="modal-name" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">Nombre Completo *</label>
+                        <input type="text" id="modal-name" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-3.5 py-2 text-sm text-white focus:outline-none transition-all">
+                    </div>
+
+                    <div>
+                        <label for="modal-phone" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">Número de WhatsApp *</label>
+                        <input type="tel" id="modal-phone" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-3.5 py-2 text-sm text-white focus:outline-none transition-all" placeholder="Ej. 0999999999">
+                    </div>
+
+                    <div>
+                        <label for="modal-date" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">Fecha de Preferencia *</label>
+                        <input type="date" id="modal-date" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-3.5 py-2 text-sm text-white focus:outline-none transition-all">
+                    </div>
+
+                    <div>
+                        <label for="modal-notes" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">Breve descripción del caso *</label>
+                        <textarea id="modal-notes" rows="3" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-3.5 py-2 text-sm text-white focus:outline-none transition-all resize-none" placeholder="Indique de qué se trata su consulta legal..."></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full py-3.5 bg-juridico-gold hover:bg-juridico-goldDark text-juridico-navy text-xs font-bold uppercase tracking-widest rounded transition-all duration-300 shadow-md">
+                            Confirmar y Solicitar Cita
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Éxito del Modal -->
+                <div id="modal-success" class="hidden p-8 text-center space-y-4">
+                    <div class="w-14 h-14 bg-juridico-gold/10 border-2 border-juridico-gold rounded-full flex items-center justify-center text-juridico-gold text-2xl mx-auto">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h4 class="serif-title text-xl font-bold text-white">Solicitud Recibida</h4>
+                    <p class="text-gray-300 text-xs leading-relaxed max-w-sm mx-auto">
+                        Hemos registrado su solicitud para agendar una cita. Un asesor se comunicará directamente con usted a su WhatsApp para coordinar el horario definitivo.
+                    </p>
+                    <button onclick="closeModal()" class="px-6 py-2 bg-juridico-gold text-juridico-navy text-xs font-bold uppercase tracking-widest rounded hover:bg-juridico-goldDark transition-colors">
+                        Cerrar Ventana
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CODE SCRIPT (Interacciones de Interfaz) -->
+    <script>
+        // Toggle Menú Móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        });
+
+        function toggleMenu() {
+            mobileMenu.classList.add('hidden');
+            menuIcon.className = 'fa-solid fa-bars text-2xl';
+        }
+
+        // Control del Modal de Agendamiento
+        const modal = document.getElementById('consultation-modal');
+        const modalForm = document.getElementById('modal-form');
+        const modalSuccess = document.getElementById('modal-success');
+        const assignedLawyerContainer = document.getElementById('assigned-lawyer-container');
+        const assignedLawyerName = document.getElementById('assigned-lawyer-name');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            // Setear fecha de mañana por defecto
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('modal-date').value = tomorrow.toISOString().substring(0, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            // Resetear estados del modal
+            setTimeout(() => {
+                modalForm.classList.remove('hidden');
+                modalSuccess.classList.add('hidden');
+                assignedLawyerContainer.classList.add('hidden');
+                assignedLawyerName.textContent = 'Abg.';
+            }, 300);
+        }
+
+        function setConsultationAbogado(nombreAbogado) {
+            openModal();
+            assignedLawyerContainer.classList.remove('hidden');
+            assignedLawyerName.textContent = nombreAbogado;
+        }
+
+        // Gestión del Formulario de Contacto Principal
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            // Simulación de envío del formulario
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+
+        function resetContactForm() {
+            document.getElementById('contact-form').reset();
+            document.getElementById('form-success').classList.add('hidden');
+        }
+
+        // Gestión del Formulario del Modal
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            
+            // Obtener datos por si se requiere generar un redireccionamiento de WhatsApp
+            const name = document.getElementById('modal-name').value;
+            const phone = document.getElementById('modal-phone').value;
+            const date = document.getElementById('modal-date').value;
+            const notes = document.getElementById('modal-notes').value;
+            const lawyer = assignedLawyerContainer.classList.contains('hidden') ? 'Cualquiera' : assignedLawyerName.textContent;
+            
+            // Mostrar mensaje de éxito interno en el modal
+            modalForm.classList.add('hidden');
+            modalSuccess.classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
