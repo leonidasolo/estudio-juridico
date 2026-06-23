@@ -25,7 +25,7 @@
                         juridico: {
                             navy: '#060d1a',       /* Azul Marino Muy Profundo */
                             navyLight: '#0d1b33',  /* Azul Marino para tarjetas y contrastes */
-                            gold: '#c5a880',       /* Dorado Elegante (como el logo) */
+                            gold: '#c5a880',       /* Dorado Elegante */
                             goldDark: '#b09166',   /* Dorado más oscuro para hover */
                             goldLight: '#ebdcc5',  /* Dorado suave de fondo */
                             silver: '#f8fafc'      /* Blanco Grisáceo */
@@ -78,6 +78,12 @@
                 <a href="#contacto" class="text-sm font-medium tracking-wider uppercase text-gray-300 hover:text-juridico-gold transition-colors duration-300">Contacto</a>
             </nav>
 
+            <!-- Redes sociales en Header (Desktop) -->
+            <div class="hidden lg:flex items-center space-x-4 border-l border-juridico-gold/20 pl-6 mr-4">
+                <a href="https://www.facebook.com/share/19DUbUKvyZ/?mibextid=wwXIfr" target="_blank" class="text-gray-400 hover:text-juridico-gold text-lg transition-colors" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.tiktok.com/@consultoreslegales_ec?_r=1&_t=ZS-97SaLWW8oQ0" target="_blank" class="text-gray-400 hover:text-juridico-gold text-lg transition-colors" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+
             <!-- Botón de Agendar Consulta (Desktop) -->
             <div class="hidden md:block">
                 <button onclick="openModal()" class="px-6 py-2.5 bg-transparent border-2 border-juridico-gold text-juridico-gold text-xs font-semibold uppercase tracking-widest rounded hover:bg-juridico-gold hover:text-juridico-navy transition-all duration-300 shadow-md hover:shadow-juridico-gold/20">
@@ -99,7 +105,15 @@
                 <a href="#servicios" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Servicios</a>
                 <a href="#equipo" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Equipo</a>
                 <a href="#contacto" onclick="toggleMenu()" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-juridico-gold hover:bg-juridico-navyLight rounded transition-all">Contacto</a>
-                <div class="pt-4 px-3">
+                
+                <!-- Redes en móvil -->
+                <div class="flex items-center space-x-6 py-2 px-3 border-t border-juridico-gold/15">
+                    <span class="text-xs uppercase tracking-wider text-gray-400">Síguenos:</span>
+                    <a href="https://www.facebook.com/share/19DUbUKvyZ/?mibextid=wwXIfr" target="_blank" class="text-gray-300 hover:text-juridico-gold text-xl"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@consultoreslegales_ec?_r=1&_t=ZS-97SaLWW8oQ0" target="_blank" class="text-gray-300 hover:text-juridico-gold text-xl"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+
+                <div class="pt-2 px-3">
                     <button onclick="toggleMenu(); openModal()" class="w-full py-3 bg-juridico-gold text-juridico-navy text-xs font-bold uppercase tracking-widest rounded shadow-md hover:bg-juridico-goldDark transition-all duration-300">
                         Agendar Consulta
                     </button>
@@ -489,7 +503,7 @@
                 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                     
-                    <!-- Información de Contacto -->
+                    <!-- Información de Contacto (Izquierda) -->
                     <div class="lg:col-span-5 space-y-8">
                         <div>
                             <h2 class="text-xs font-bold uppercase tracking-widest text-juridico-gold mb-2">Canales de Atención</h2>
@@ -524,14 +538,24 @@
                                 </div>
                             </div>
 
-                            <!-- TikTok Oficial -->
+                            <!-- Redes Sociales Actualizadas -->
                             <div class="flex items-start space-x-4">
                                 <div class="w-10 h-10 rounded-lg bg-juridico-navyLight border border-juridico-gold/25 flex items-center justify-center text-juridico-gold flex-shrink-0">
                                     <i class="fa-brands fa-tiktok"></i>
                                 </div>
                                 <div>
                                     <span class="block text-xs uppercase tracking-wider text-gray-400 font-medium">TikTok Corporativo</span>
-                                    <a href="https://www.tiktok.com/@consultoreslegales.ec" target="_blank" class="text-white hover:text-juridico-gold text-sm transition-colors">@consultoreslegales.ec</a>
+                                    <a href="https://www.tiktok.com/@consultoreslegales_ec?_r=1&_t=ZS-97SaLWW8oQ0" target="_blank" class="text-white hover:text-juridico-gold text-sm transition-colors">@consultoreslegales_ec</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-juridico-navyLight border border-juridico-gold/25 flex items-center justify-center text-juridico-gold flex-shrink-0">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-wider text-gray-400 font-medium">Facebook Corporativo</span>
+                                    <a href="https://www.facebook.com/share/19DUbUKvyZ/?mibextid=wwXIfr" target="_blank" class="text-white hover:text-juridico-gold text-sm transition-colors">Consultores Legales Ecuador</a>
                                 </div>
                             </div>
                         </div>
@@ -547,22 +571,24 @@
                         </div>
                     </div>
 
-                    <!-- Formulario de Contacto Principal -->
+                    <!-- Formulario de Contacto (Derecha) - ¡Conectado al 100% con tu Web3Forms! -->
                     <div class="lg:col-span-7 bg-juridico-navyLight rounded-2xl border border-juridico-gold/20 p-6 sm:p-10 shadow-2xl relative">
                         
+                        <!-- Mensaje de éxito del formulario -->
                         <div id="form-success" class="hidden absolute inset-0 bg-juridico-navyLight/98 rounded-2xl flex flex-col items-center justify-center p-8 text-center z-20 transition-all duration-300">
                             <div class="w-16 h-16 bg-juridico-gold/10 border-2 border-juridico-gold rounded-full flex items-center justify-center text-juridico-gold text-3xl mb-4 animate-bounce">
                                 <i class="fa-solid fa-circle-check"></i>
                             </div>
                             <h3 class="serif-title text-2xl font-bold text-white mb-2">Mensaje Recibido</h3>
                             <p class="text-gray-300 text-sm max-w-md mx-auto mb-6">
-                                Muchas gracias por ponerse en contacto con <strong class="text-white">Consultores Legales Ecuador</strong>. Un abogado experto de nuestro estudio analizará su solicitud y se comunicará con usted de inmediato.
+                                Muchas gracias por ponerse en contacto con <strong class="text-white">Consultores Legales Ecuador</strong>. Un abogado experto de nuestro estudio analizará su consulta y se comunicará con usted de inmediato a su correo o teléfono.
                             </p>
                             <button onclick="resetContactForm()" class="px-6 py-2 bg-juridico-gold text-juridico-navy text-xs font-bold uppercase tracking-widest rounded hover:bg-juridico-goldDark transition-colors">
                                 Enviar Otro Mensaje
                             </button>
                         </div>
 
+                        <!-- Formulario conectado a Web3Forms -->
                         <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
@@ -596,12 +622,12 @@
 
                             <div>
                                 <label for="message" class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2">Detalles del Caso / Consulta *</label>
-                                <textarea id="message" name="Mensaje" rows="4" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-juridico-gold transition-all resize-none" placeholder="Escriba brevemente su situación jurídica..."></textarea>
+                                <textarea id="message" name="Mensaje" rows="4" required class="w-full bg-juridico-navy border border-juridico-gold/20 focus:border-juridico-gold rounded px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-juridico-gold transition-all resize-none" placeholder="Escriba brevemente su situación jurídica para poder agendar una respuesta estratégica..."></textarea>
                             </div>
 
                             <div class="flex items-center space-x-3 text-xs text-gray-400">
                                 <i class="fa-solid fa-lock text-juridico-gold"></i>
-                                <span>Garantizamos confidencialidad absoluta bajo secreto profesional.</span>
+                                <span>Garantizamos total confidencialidad absoluta bajo secreto profesional.</span>
                             </div>
 
                             <div>
@@ -653,13 +679,17 @@
                     </ul>
                 </div>
 
-                <!-- Ubicación y Legal -->
+                <!-- Ubicación y Redes en Footer -->
                 <div class="md:col-span-4 space-y-3">
                     <h4 class="serif-title text-xs font-bold text-white uppercase tracking-wider">Oficinas Principales</h4>
                     <p class="text-xs leading-relaxed">
                         📍 Edificio City Office, Piso de Oficinas, Guayaquil, Ecuador.<br>
                         ✉️ Correo: <a href="mailto:consultoreslegalesec_@outlook.com" class="hover:text-juridico-gold transition-colors">consultoreslegalesec_@outlook.com</a>
                     </p>
+                    <div class="flex items-center space-x-4 pt-2">
+                        <a href="https://www.facebook.com/share/19DUbUKvyZ/?mibextid=wwXIfr" target="_blank" class="text-gray-400 hover:text-juridico-gold text-lg transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.tiktok.com/@consultoreslegales_ec?_r=1&_t=ZS-97SaLWW8oQ0" target="_blank" class="text-gray-400 hover:text-juridico-gold text-lg transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
                 </div>
 
             </div>
@@ -668,8 +698,6 @@
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
                 <p>&copy; 2026 Consultores Legales Ecuador. Todos los derechos reservados.</p>
                 <div class="flex items-center space-x-4">
-                    <a href="https://www.tiktok.com/@consultoreslegales.ec" target="_blank" class="hover:text-juridico-gold transition-colors text-base"><i class="fa-brands fa-tiktok"></i></a>
-                    <span class="text-gray-600">|</span>
                     <span class="text-gray-500">Diseño Legal Exclusivo</span>
                 </div>
             </div>
@@ -677,10 +705,9 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE FLOATING BUTTONS (WhatsApp Directo) -->
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
     <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
-        <!-- WhatsApp Floating Button (Enfocado a Guayaquil, Ecuador - Número actualizado) -->
-        <a href="https://wa.me/593962788848?text=Hola,%20quisiera%20agendar%20una%20consulta%20legal%20con%20Consultores%20Legales%20Ecuador." target="_blank" class="w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-all duration-300 relative group" aria-label="WhatsApp Asesoría">
+        <a href="https://wa.me/593962788848?text=Hola,%20quisiera%20agendar%20una%20consulta%20legal%20con%20Consultores%20Legales%20Ecuador." target="_blank" class="w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-all duration-300 relative group" aria-label="WhatsApp Directo">
             <i class="fa-brands fa-whatsapp"></i>
             <span class="absolute right-16 bg-juridico-navyLight text-white border border-juridico-gold/20 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">WhatsApp Asesoría</span>
         </a>
@@ -708,6 +735,7 @@
                     <p id="modal-description" class="text-xs text-gray-400 mt-1">Reserve un espacio para analizar su caso con uno de nuestros especialistas.</p>
                 </div>
 
+                <!-- Formulario del Modal conectado a Web3Forms -->
                 <form id="modal-form" onsubmit="handleModalSubmit(event)" class="p-6 sm:p-8 space-y-4">
                     
                     <div id="assigned-lawyer-container" class="hidden flex items-center space-x-2 bg-juridico-gold/10 text-juridico-gold border border-juridico-gold/30 p-2.5 rounded text-xs font-medium">
@@ -749,7 +777,7 @@
                     </div>
                     <h4 class="serif-title text-xl font-bold text-white">Solicitud Recibida</h4>
                     <p class="text-gray-300 text-xs leading-relaxed max-w-sm mx-auto">
-                        Hemos registrado su solicitud para agendar una cita. Un asesor se comunicará directamente con usted a su WhatsApp para coordinar el horario definitivo.
+                        Hemos registrado su solicitud para agendar una cita. Un asesor del estudio analizará la información y se comunicará directamente con usted para coordinar el horario definitivo.
                     </p>
                     <button onclick="closeModal()" class="px-6 py-2 bg-juridico-gold text-juridico-navy text-xs font-bold uppercase tracking-widest rounded hover:bg-juridico-goldDark transition-colors">
                         Cerrar Ventana
@@ -762,7 +790,7 @@
 
     <!-- CODE SCRIPT -->
     <script>
-        // CONFIGURADO CORRECTAMENTE CON TU CLAVE DE ACCESO DE WEB3FORMS
+        // Clave oficial de Web3Forms de tu cuenta vinculada a consultoreslegalesec_@outlook.com
         const web3FormsKey = "c40bd911-3732-41ae-b2bc-fbfff0cdbfc6"; 
 
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -818,7 +846,7 @@
             modalLawyerInput.value = nombreAbogado;
         }
 
-        // Gestión del Formulario de Contacto Principal con Envío Seguro por Web3Forms
+        // Envío seguro de Web3Forms para el Formulario de Contacto Principal
         async function handleFormSubmit(event) {
             event.preventDefault();
             const form = event.target;
@@ -829,7 +857,7 @@
 
             const formData = new FormData(form);
             formData.append("access_key", web3FormsKey);
-            formData.append("subject", "Nueva Consulta Legal - Sitio Web");
+            formData.append("subject", "Nueva Consulta Jurídica - Sitio Web");
 
             try {
                 const response = await fetch("https://api.web3forms.com/submit", {
@@ -840,10 +868,10 @@
                 if (response.ok) {
                     document.getElementById('form-success').classList.remove('hidden');
                 } else {
-                    alert("Hubo un problema con el servidor al enviar tu consulta. Por favor, contáctanos directamente por WhatsApp.");
+                    alert("Hubo un problema al procesar el formulario. Por favor, escríbenos directamente por el botón de WhatsApp.");
                 }
             } catch (error) {
-                alert("Ocurrió un error al enviar el formulario. Verifica tu conexión e inténtalo de nuevo.");
+                alert("Ocurrió un error al enviar los datos. Revisa tu conexión e inténtalo de nuevo.");
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = "ENVIAR CONSULTA LEGAL";
@@ -855,18 +883,18 @@
             document.getElementById('form-success').classList.add('hidden');
         }
 
-        // Gestión del Formulario del Modal con Envío Seguro por Web3Forms
+        // Envío seguro de Web3Forms para el Formulario del Modal de Agendamiento
         async function handleModalSubmit(event) {
             event.preventDefault();
             const form = event.target;
             const submitBtn = document.getElementById('modal-submit-btn');
             
             submitBtn.disabled = true;
-            submitBtn.textContent = "REGISTRANDO CITA...";
+            submitBtn.textContent = "AGENDANDO CITA...";
 
             const formData = new FormData(form);
             formData.append("access_key", web3FormsKey);
-            formData.append("subject", "Nueva Solicitud de Cita - " + modalLawyerInput.value);
+            formData.append("subject", "Solicitud de Cita para: " + modalLawyerInput.value);
 
             try {
                 const response = await fetch("https://api.web3forms.com/submit", {
@@ -878,10 +906,10 @@
                     modalForm.classList.add('hidden');
                     modalSuccess.classList.remove('hidden');
                 } else {
-                    alert("Hubo un problema al agendar la cita. Por favor, comunícate directamente por nuestro botón de WhatsApp.");
+                    alert("Hubo un error al procesar el agendamiento. Por favor contáctanos por WhatsApp.");
                 }
             } catch (error) {
-                alert("Ocurrió un error de red al solicitar tu cita. Inténtalo de nuevo.");
+                alert("Error de red al conectar con el servidor. Inténtalo de nuevo.");
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = "CONFIRMAR Y SOLICITAR CITA";
